@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,6 +29,9 @@ public class PackageActivity extends ListActivity {
 
     @Bind(R.id.package_cooperative)
     TextView packageCooperative;
+
+    @Bind(R.id.package_picture)
+    ImageView packagePicture;
 
     private List<Item> _items;
 
@@ -52,7 +56,7 @@ public class PackageActivity extends ListActivity {
         Cooperative cooperative = new Cooperative();
         cooperative.setName("Test Cooperative");
         cooperative.setAddress("Example Street 15, 12345 São Paulo");
-        WastePackage p = new WastePackage();
+        final WastePackage p = new WastePackage();
         p.setBarcode(barcode);
         p.setMaterial(WastePackage.EMaterial.PLASTIC);
         p.setWeight(5.5);
@@ -61,7 +65,14 @@ public class PackageActivity extends ListActivity {
 
         setDetails(p);
 
-
+        packagePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PackageActivity.this, ImageActivity.class);
+                intent.putExtra(ImageActivity.IMAGE_URL, p.getImageUrl());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -90,6 +101,7 @@ public class PackageActivity extends ListActivity {
 
         packageMaterial.setText(p.getMaterial().toString());
         packageCooperative.setText(p.getCooperative().getName());
+        new DownloadImageTask(packagePicture).execute(p.getImageUrl());
 
         _items = new ArrayList<>();
         _items.add(new PackageHeader("Package information"));
@@ -99,9 +111,6 @@ public class PackageActivity extends ListActivity {
         _items.add(new PackageHeader("Cooperative"));
         _items.add(new PackageCard("Name", p.getCooperative().getName()));
         _items.add(new PackageCard("Address", p.getCooperative().getAddress(), PackageCard.TYPES.MAP));
-
-        // TODO list those things:
-        // * picture
 
         PackageCardAdapter adapter = new PackageCardAdapter(this, _items);
         setListAdapter(adapter);

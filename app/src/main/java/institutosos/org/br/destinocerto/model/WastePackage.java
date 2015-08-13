@@ -46,6 +46,10 @@ public class WastePackage {
         return cooperative;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
     public enum EMaterial {
         PLASTIC
     }
