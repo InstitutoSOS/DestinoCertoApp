@@ -1,16 +1,13 @@
-package institutosos.org.br.destinocerto;
+package institutosos.org.br.destinocerto.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import institutosos.org.br.destinocerto.activity.detail.PackageActivity;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class ScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {

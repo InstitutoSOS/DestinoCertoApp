@@ -1,11 +1,10 @@
-package institutosos.org.br.destinocerto;
+package institutosos.org.br.destinocerto.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.ContentResolver;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
@@ -28,6 +27,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import institutosos.org.br.destinocerto.R;
 
 /**
  * A login screen that offers login via email/password.

@@ -1,4 +1,4 @@
-package institutosos.org.br.destinocerto;
+package institutosos.org.br.destinocerto.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import institutosos.org.br.destinocerto.R;
+import institutosos.org.br.destinocerto.activity.detail.PackageActivity;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.scanButton) Button _scanButton;
@@ -20,6 +22,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        // debug code
+        Intent intent = new Intent(this, PackageActivity.class);
+        intent.putExtra(PackageActivity.BARCODE, "1234");
+        startActivity(intent);
+        // end debug code
 
         final MainActivity activity = this;
         _scanButton.setOnClickListener(new View.OnClickListener() {
