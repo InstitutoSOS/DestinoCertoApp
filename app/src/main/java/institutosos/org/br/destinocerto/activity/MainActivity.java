@@ -14,8 +14,10 @@ import institutosos.org.br.destinocerto.R;
 import institutosos.org.br.destinocerto.activity.detail.PackageActivity;
 
 public class MainActivity extends AppCompatActivity {
-    @Bind(R.id.scanButton) Button _scanButton;
-    @Bind(R.id.updateLocationButton) Button _updateLocationButton;
+    @Bind(R.id.scanButton)
+    Button _scanButton;
+    @Bind(R.id.updateLocationButton)
+    Button _updateLocationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +26,15 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         // debug code
-        Intent intent = new Intent(this, PackageActivity.class);
-        intent.putExtra(PackageActivity.BARCODE, "1234");
-        startActivity(intent);
+        //Intent intent = new Intent(this, PackageActivity.class);
+        //intent.putExtra(PackageActivity.BARCODE, "f9483688-2641-45b6-ba50-50f3db2488a4");
+        //startActivity(intent);
         // end debug code
 
-        final MainActivity activity = this;
         _scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(activity, ScannerActivity.class));
+                startActivity(new Intent(MainActivity.this, ScannerActivity.class));
             }
         });
     }
@@ -53,9 +54,16 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_sign_in) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_about) {
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
             return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }

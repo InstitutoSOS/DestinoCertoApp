@@ -3,7 +3,7 @@ package institutosos.org.br.destinocerto.model;
 /**
  * Created by rehans on 13-Aug-15.
  */
-public class Cooperative {
+public class Site {
     private String name;
     private String address;
 

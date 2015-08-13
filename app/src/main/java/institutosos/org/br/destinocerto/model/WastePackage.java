@@ -1,13 +1,13 @@
 package institutosos.org.br.destinocerto.model;
 
-/**
- * Created by rehans on 13-Aug-15.
- */
+import com.google.gson.annotations.SerializedName;
+
 public class WastePackage {
     private EMaterial material;
     private double weight;
+    @SerializedName("picture")
     private String imageUrl;
-    private Cooperative cooperative;
+    private Site site;
     private String barcode;
 
     public void setMaterial(EMaterial material) {
@@ -22,8 +22,8 @@ public class WastePackage {
         this.imageUrl = imageUrl;
     }
 
-    public void setCooperative(Cooperative cooperative) {
-        this.cooperative = cooperative;
+    public void setSite(Site site) {
+        this.site = site;
     }
 
     public double getWeight() {
@@ -42,8 +42,8 @@ public class WastePackage {
         return barcode;
     }
 
-    public Cooperative getCooperative() {
-        return cooperative;
+    public Site getSite() {
+        return site;
     }
 
     public String getImageUrl() {
