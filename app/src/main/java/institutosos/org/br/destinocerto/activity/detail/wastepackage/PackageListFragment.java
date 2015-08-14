@@ -1,6 +1,7 @@
 package institutosos.org.br.destinocerto.activity.detail.wastepackage;
 
 import android.app.ListFragment;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -22,15 +23,17 @@ public class PackageListFragment extends ListFragment {
     private PackageCardAdapter _adapter;
 
     public void setPackage(WastePackage wastePackage) {
-        _items.add(new PackageHeader("Package information"));
-        _items.add(new PackageCard("Barcode", wastePackage.getBarcode()));
-        _items.add(new PackageCard("Weight", wastePackage.getWeight() + " kg"));
+        Resources res =getResources();
 
-        _items.add(new PackageHeader("Site"));
-        _items.add(new PackageCard("Name", wastePackage.getCurrentLocation().getSite().getName()));
-        _items.add(new PackageCard("Address", wastePackage.getCurrentLocation().getSite().getAddress(), PackageCard.TYPES.MAP));
+        _items.add(new PackageHeader(res.getString(R.string.package_information)));
+        _items.add(new PackageCard(res.getString(R.string.package_barcode), wastePackage.getBarcode()));
+        _items.add(new PackageCard(res.getString(R.string.package_weight), wastePackage.getWeight() + " kg"));
 
-        _items.add(new PackageHeader("Location History"));
+        _items.add(new PackageHeader(res.getString(R.string.package_site)));
+        _items.add(new PackageCard(res.getString(R.string.package_site_name), wastePackage.getCurrentLocation().getSite().getName()));
+        _items.add(new PackageCard(res.getString(R.string.package_site_address), wastePackage.getCurrentLocation().getSite().getAddress(), PackageCard.TYPES.MAP));
+
+        _items.add(new PackageHeader(res.getString(R.string.package_location_history)));
 
         for(Location l : wastePackage.getLocationHistory()){
             _items.add(new PackageCard(l.getTimestamp(), l.getSite().getName()));

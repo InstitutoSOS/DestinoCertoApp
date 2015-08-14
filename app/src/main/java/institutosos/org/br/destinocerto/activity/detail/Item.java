@@ -11,9 +11,6 @@ public abstract class Item {
 
     public abstract View getView(LayoutInflater inflater, View convertView, Context context);
 
-    public void click(PackageActivity context) {
-    }
-
     public void longClick(PackageActivity packageActivity) {
     }
 }

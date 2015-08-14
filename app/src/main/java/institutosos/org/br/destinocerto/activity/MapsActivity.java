@@ -51,8 +51,8 @@ public class MapsActivity extends FragmentActivity {
             @Override
             public void failure(RetrofitError error) {
                 new AlertDialog.Builder(MapsActivity.this)
-                        .setTitle("Could not fetch sites")
-                        .setMessage("The sites could not be fetched from our servers.")
+                        .setTitle(getResources().getString(R.string.sites_not_found))
+                        .setMessage(getResources().getString(R.string.sites_not_found_description))
                         .setNeutralButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(MapsActivity.this, MainActivity.class);

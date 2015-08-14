@@ -3,8 +3,6 @@ package institutosos.org.br.destinocerto.activity.detail.wastepackage;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -13,18 +11,14 @@ import android.widget.Toast;
 import institutosos.org.br.destinocerto.R;
 import institutosos.org.br.destinocerto.activity.detail.Item;
 
-/**
- * Created by rehans on 13-Aug-15.
- */
 public class PackageCard extends Item {
     public enum TYPES {
         MAP, EMAIL, PHONE
-    };
+    }
 
     private TYPES _type;
     private final String str1;
     private final String str2;
-    private String _actionText;
 
     public PackageCard(String text1, String text2) {
         this.str1 = text1;
@@ -34,11 +28,6 @@ public class PackageCard extends Item {
     public PackageCard(String text1, String text2, TYPES type) {
         this(text1, text2);
         _type = type;
-    }
-
-    public PackageCard(String text1, String text2, TYPES type, String actionText) {
-        this(text1, text2, type);
-        _actionText = actionText;
     }
 
     @Override
@@ -71,32 +60,6 @@ public class PackageCard extends Item {
     private String formatPhoneNumber(String number) {
         String searchPattern = "(.{3})(.{2})(.{3})(.{2})(.{2})";
         return number.replaceAll(searchPattern, "$1 $2 $3 $4 $5");
-    }
-
-    @Override
-    public void click(PackageActivity context) {
-        if (_type == null || str2.length() <= 0) {
-            return;
-        }
-        String action = _actionText != null && _actionText.length() > 0 ? _actionText : str2;
-        switch (_type) {
-            case MAP:
-                Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("geo:?q=" + action));
-                context.startActivity(mapIntent);
-                break;
-            case EMAIL:
-                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-                emailIntent.setType("message/rfc822");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { action });
-                context.startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-                break;
-            case PHONE:
-                Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + action));
-                context.startActivity(dialIntent);
-                break;
-            default:
-
-        }
     }
 
     @Override

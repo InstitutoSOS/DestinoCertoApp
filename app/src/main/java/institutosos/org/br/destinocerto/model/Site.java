@@ -2,7 +2,9 @@ package institutosos.org.br.destinocerto.model;
 
 import com.google.gson.annotations.SerializedName;
 
+@SuppressWarnings("unused")
 public class Site {
+
     private Integer id;
     private String name;
     private String address;

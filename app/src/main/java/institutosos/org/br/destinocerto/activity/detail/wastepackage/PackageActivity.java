@@ -69,8 +69,8 @@ public class PackageActivity extends AppCompatActivity {
             @Override
             public void failure(RetrofitError error) {
                 new AlertDialog.Builder(PackageActivity.this)
-                        .setTitle("Package code not found")
-                        .setMessage("The scanned code could not be found in our database.")
+                        .setTitle(getResources().getString(R.string.package_not_found))
+                        .setMessage(getResources().getString(R.string.package_not_found_description))
                         .setNeutralButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(PackageActivity.this, MainActivity.class);

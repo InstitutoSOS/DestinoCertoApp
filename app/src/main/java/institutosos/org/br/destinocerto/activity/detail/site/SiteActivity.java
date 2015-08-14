@@ -59,8 +59,8 @@ public class SiteActivity extends AppCompatActivity {
             @Override
             public void failure(RetrofitError error) {
                 new AlertDialog.Builder(SiteActivity.this)
-                        .setTitle("Site not found")
-                        .setMessage("The site could not be found in our database.")
+                        .setTitle(R.string.site_not_found)
+                        .setMessage(R.string.site_not_found_description)
                         .setNeutralButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(SiteActivity.this, MainActivity.class);

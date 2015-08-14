@@ -12,7 +12,6 @@ public class Application extends android.app.Application {
         _apiClient = new ApiClient();
     }
 
-
     public static ApiClient getApiClient() {
         return _apiClient;
     }

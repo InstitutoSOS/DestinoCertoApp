@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">Destino Certo</string>
     <string name="title_activity_main">Destino Certo</string>
+    <string name="logo_description">Destino Certo Logo</string>
 
     <string name="action_settings">Settings</string>
     <string name="action_about">About</string>
-    <string name="update_location_requires_sign_up">Update Location (requires sign up)</string>
-    <string name="update_location">Update Location</string>
     <string name="scan">Scan</string>
 
     <string name="title_activity_package">Package details</string>
@@ -16,7 +15,23 @@
     <string name="title_activity_about">About Destino Certo</string>
 
     <string name="about_text">Legal text and stuffs.</string>
+    <string name="site_not_found">Site not found</string>
+    <string name="site_not_found_description">The site could not be found in our database.</string>
+    <string name="site_information">Site information</string>
+    <string name="site_address">Address</string>
+    <string name="package_not_found">Package code not found</string>
+    <string name="package_not_found_description">The scanned code could not be found in our database.</string>
+    <string name="package_information">Package information</string>
+    <string name="package_barcode">Barcode</string>
+    <string name="package_weight">Weight</string>
+    <string name="package_site">Site</string>
+    <string name="package_site_name">Name</string>
+    <string name="package_site_address">Address</string>
+    <string name="package_location_history">Location History</string>
     <string name="title_activity_maps">Map</string>
     <string name="show_map">Map</string>
+    <string name="sites_not_found">Could not fetch sites</string>
+    <string name="sites_not_found_description">The sites could not be fetched from our servers.</string>
+
     <string name="title_activity_site">Site</string>
 </resources>

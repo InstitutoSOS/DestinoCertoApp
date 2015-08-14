@@ -25,8 +25,8 @@ public class SiteListFragment extends ListFragment {
     private PackageCardAdapter _adapter;
 
     public void setSite(Site site) {
-        _items.add(new PackageHeader("Site information"));
-        _items.add(new PackageCard("Address", site.getAddress()));
+        _items.add(new PackageHeader(getResources().getString(R.string.site_information)));
+        _items.add(new PackageCard(getResources().getString(R.string.site_address), site.getAddress()));
 
         // TODO add some summary numbers
         /*for(Location l : wastePackage.getLocationHistory()){

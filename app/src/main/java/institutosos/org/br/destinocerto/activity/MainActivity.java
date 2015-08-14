@@ -16,9 +16,6 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.scanButton)
     Button _scanButton;
 
-    @Bind(R.id.updateLocationButton)
-    Button _updateLocationButton;
-
     @Bind(R.id.mapButton)
     Button _mapButton;
 
