@@ -14,7 +14,9 @@
     <string name="fullscreen_image_description">Image of package</string>
     <string name="title_activity_about">About Destino Certo</string>
 
-    <string name="about_text">Legal text and stuffs.</string>
+    <string name="about_text">This app was created during the WorldSkills Digital Challenge 2015.
+        The hackathon like event took apart during the 4 days of competition in São Paulo. Team
+        members: Kevin Dantas Shih, Guilherme Pontes, Alessandra Rosa, Sebastian Häni</string>
     <string name="site_not_found">Site not found</string>
     <string name="site_not_found_description">The site could not be found in our database.</string>
     <string name="site_information">Site information</string>
@@ -34,5 +36,10 @@
     <string name="sites_not_found_description">The sites could not be fetched from our servers.</string>
     <string name="update_location">Update location</string>
 
+    <string name="prompt_site_name">Cooperative name</string>
+    <string name="prompt_site_address">Address</string>
+    <string name="create_site">Create cooperative</string>
+
     <string name="title_activity_site">Site</string>
+    <string name="title_activity_create_site">Create Site</string>
 </resources>

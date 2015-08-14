@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.signup.LoginActivity"
             android:label="@string/app_name"
             android:parentActivityName=".activity.MainActivity"
             android:windowSoftInputMode="adjustResize|stateVisible" />
@@ -96,6 +96,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="institutosos.org.br.destinocerto.activity.MapsActivity" />
+        </activity>
+        <activity
+            android:name=".activity.signup.CreateSiteActivity"
+            android:label="@string/title_activity_create_site"
+            android:parentActivityName=".activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="institutosos.org.br.destinocerto.activity.MainActivity" />
         </activity>
     </application>
 

@@ -4,11 +4,13 @@ import java.util.List;
 
 import institutosos.org.br.destinocerto.model.LoginResult;
 import institutosos.org.br.destinocerto.model.Site;
+import institutosos.org.br.destinocerto.model.User;
 import institutosos.org.br.destinocerto.model.WastePackage;
 import retrofit.Callback;
-import retrofit.http.Body;
 import retrofit.http.GET;
+import retrofit.http.Multipart;
 import retrofit.http.POST;
+import retrofit.http.Part;
 import retrofit.http.Path;
 
 public interface ApiService {
@@ -21,10 +23,16 @@ public interface ApiService {
     @GET("/site/{id}")
     void getSite(@Path("id") int siteId, Callback<Site> cb);
 
-    @POST("/user/login")
-    LoginResult login(@Body String username, @Body String password);
+    @Multipart
+    @POST("/site")
+    void createSite(@Part("name") String name, @Part("address") String address, Callback<Site> cb);
 
+    @Multipart
+    @POST("/user/login")
+    LoginResult login(@Part("username") String username, @Part("password") String password);
+
+    @Multipart
     @POST("/user")
-    void signUp(@Body String username, @Body String password);
+    User signUp(@Part("username") String username, @Part("password") String password);
 
 }

@@ -1,10 +1,11 @@
-package institutosos.org.br.destinocerto.activity;
+package institutosos.org.br.destinocerto.activity.signup;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -237,11 +238,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
+    enum EStatus {
+        Failed,
+        LoggedIn,
+        CreatedUser
+    }
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    public class UserLoginTask extends AsyncTask<Void, Void, EStatus> {
 
         private final String mEmail;
         private final String mPassword;
@@ -252,28 +259,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         @Override
-        protected Boolean doInBackground(Void... params) {
+        protected EStatus doInBackground(Void... params) {
             LoginResult result = Application.getApiClient().getService().login(mEmail, mPassword);
 
-            if(result.isSuccess()){
-                return true;
+            if (result.isSuccess()) {
+                return EStatus.LoggedIn;
             }
 
             if (result.userExists()) {
-                return false;
+                return EStatus.Failed;
             }
 
             Application.getApiClient().getService().signUp(mEmail, mPassword);
-            return true;
+            return EStatus.CreatedUser;
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
+        protected void onPostExecute(final EStatus result) {
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
+            if (result == EStatus.LoggedIn) {
                 finish();
+            } else if (result == EStatus.CreatedUser) {
+                startActivity(new Intent(LoginActivity.this, CreateSiteActivity.class));
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

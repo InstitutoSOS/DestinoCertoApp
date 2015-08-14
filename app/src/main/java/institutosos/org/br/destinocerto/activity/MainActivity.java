@@ -11,6 +11,7 @@ import android.widget.Button;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import institutosos.org.br.destinocerto.R;
+import institutosos.org.br.destinocerto.activity.signup.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.scanButton)
