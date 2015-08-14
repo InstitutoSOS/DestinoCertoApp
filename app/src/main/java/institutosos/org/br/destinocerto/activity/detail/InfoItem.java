@@ -1,4 +1,4 @@
-package institutosos.org.br.destinocerto.activity.detail.wastepackage;
+package institutosos.org.br.destinocerto.activity.detail;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -9,9 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import institutosos.org.br.destinocerto.R;
-import institutosos.org.br.destinocerto.activity.detail.Item;
+import institutosos.org.br.destinocerto.activity.detail.wastepackage.PackageActivity;
 
-public class PackageCard extends Item {
+public class InfoItem extends Item {
     public enum TYPES {
         MAP, EMAIL, PHONE
     }
@@ -20,19 +20,19 @@ public class PackageCard extends Item {
     private final String str1;
     private final String str2;
 
-    public PackageCard(String text1, String text2) {
+    public InfoItem(String text1, String text2) {
         this.str1 = text1;
         this.str2 = text2;
     }
 
-    public PackageCard(String text1, String text2, TYPES type) {
+    public InfoItem(String text1, String text2, TYPES type) {
         this(text1, text2);
         _type = type;
     }
 
     @Override
     public int getViewType() {
-        return PackageCardAdapter.RowType.LIST_ITEM.ordinal();
+        return InfoItemAdapter.RowType.LIST_ITEM.ordinal();
     }
 
     @Override

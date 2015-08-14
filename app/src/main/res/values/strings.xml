@@ -32,6 +32,7 @@
     <string name="show_map">Map</string>
     <string name="sites_not_found">Could not fetch sites</string>
     <string name="sites_not_found_description">The sites could not be fetched from our servers.</string>
+    <string name="update_location">Update location</string>
 
     <string name="title_activity_site">Site</string>
 </resources>

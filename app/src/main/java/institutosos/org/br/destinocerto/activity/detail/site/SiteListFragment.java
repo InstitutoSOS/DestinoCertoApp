@@ -14,23 +14,23 @@ import java.util.List;
 import institutosos.org.br.destinocerto.R;
 import institutosos.org.br.destinocerto.activity.detail.Item;
 import institutosos.org.br.destinocerto.activity.detail.wastepackage.PackageActivity;
-import institutosos.org.br.destinocerto.activity.detail.wastepackage.PackageCard;
-import institutosos.org.br.destinocerto.activity.detail.wastepackage.PackageCardAdapter;
-import institutosos.org.br.destinocerto.activity.detail.wastepackage.PackageHeader;
+import institutosos.org.br.destinocerto.activity.detail.InfoItem;
+import institutosos.org.br.destinocerto.activity.detail.InfoItemAdapter;
+import institutosos.org.br.destinocerto.activity.detail.InfoItemHeader;
 import institutosos.org.br.destinocerto.model.Site;
 
 public class SiteListFragment extends ListFragment {
 
     private List<Item> _items;
-    private PackageCardAdapter _adapter;
+    private InfoItemAdapter _adapter;
 
     public void setSite(Site site) {
-        _items.add(new PackageHeader(getResources().getString(R.string.site_information)));
-        _items.add(new PackageCard(getResources().getString(R.string.site_address), site.getAddress()));
+        _items.add(new InfoItemHeader(getResources().getString(R.string.site_information)));
+        _items.add(new InfoItem(getResources().getString(R.string.site_address), site.getAddress()));
 
         // TODO add some summary numbers
         /*for(Location l : wastePackage.getLocationHistory()){
-            _items.add(new PackageCard(l.getTimestamp(), l.getSite().getName()));
+            _items.add(new InfoItem(l.getTimestamp(), l.getSite().getName()));
         }*/
 
         _adapter.notifyDataSetChanged();
@@ -39,7 +39,7 @@ public class SiteListFragment extends ListFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         _items = new ArrayList<>();
-        _adapter = new PackageCardAdapter(getActivity(), _items);
+        _adapter = new InfoItemAdapter(getActivity(), _items);
 
         return inflater.inflate(R.layout.fragment_item_list, container, false);
     }

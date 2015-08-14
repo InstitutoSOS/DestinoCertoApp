@@ -1,4 +1,4 @@
-package institutosos.org.br.destinocerto.activity.detail.wastepackage;
+package institutosos.org.br.destinocerto.activity.detail;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import institutosos.org.br.destinocerto.activity.detail.Item;
 
-public class PackageCardAdapter extends ArrayAdapter<Item> {
+public class InfoItemAdapter extends ArrayAdapter<Item> {
     private LayoutInflater _inflater;
     private Context _context;
 
@@ -18,7 +18,7 @@ public class PackageCardAdapter extends ArrayAdapter<Item> {
         HEADER_ITEM, LIST_ITEM
     }
 
-    public PackageCardAdapter(Context context, List<Item> items) {
+    public InfoItemAdapter(Context context, List<Item> items) {
         super(context, 0, items);
         _inflater = LayoutInflater.from(context);
         _context = context;

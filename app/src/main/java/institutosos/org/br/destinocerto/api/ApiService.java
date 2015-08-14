@@ -2,6 +2,7 @@ package institutosos.org.br.destinocerto.api;
 
 import java.util.List;
 
+import institutosos.org.br.destinocerto.model.LoginResult;
 import institutosos.org.br.destinocerto.model.Site;
 import institutosos.org.br.destinocerto.model.WastePackage;
 import retrofit.Callback;
@@ -20,13 +21,10 @@ public interface ApiService {
     @GET("/site/{id}")
     void getSite(@Path("id") int siteId, Callback<Site> cb);
 
-    @POST("/package/{id}")
-    void signUp(@Body double lat, @Body double lng, Callback<WastePackage> cb);
-
     @POST("/user/login")
-    void login(@Body String username, @Body String password, Callback<WastePackage> cb);
+    LoginResult login(@Body String username, @Body String password);
 
     @POST("/user")
-    void signUp(@Body String username, @Body String password, Callback<WastePackage> cb);
+    void signUp(@Body String username, @Body String password);
 
 }

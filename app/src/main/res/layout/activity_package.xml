@@ -11,14 +11,16 @@
     <RelativeLayout
         android:id="@+id/detail_header"
         android:layout_width="fill_parent"
-        android:layout_height="120dp">
+        android:layout_height="100dp">
 
         <ImageView
             android:id="@+id/package_picture"
             android:layout_width="80dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:contentDescription="@string/package_picture_description"
             android:scaleType="fitStart"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:visibility="invisible" />
 
         <ProgressBar
@@ -31,7 +33,8 @@
             android:id="@+id/package_material"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
+            android:layout_toEndOf="@id/package_picture"
+            android:layout_toRightOf="@+id/package_picture"
             android:textIsSelectable="true"
             android:textSize="30sp" />
 
@@ -40,7 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/package_material"
-            android:layout_marginLeft="100dp"
+            android:layout_toEndOf="@id/package_picture"
+            android:layout_toRightOf="@+id/package_picture"
             android:textIsSelectable="true"
             android:textSize="18sp" />
     </RelativeLayout>
@@ -52,5 +56,13 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/detail_header"
         tools:layout="@layout/fragment_item_list" />
+
+    <Button
+        android:id="@+id/update_package_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/package_info_list"
+        android:visibility="gone"
+        android:text="@string/update_location" />
 
 </RelativeLayout>

@@ -13,30 +13,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import institutosos.org.br.destinocerto.R;
+import institutosos.org.br.destinocerto.activity.detail.InfoItem;
 import institutosos.org.br.destinocerto.activity.detail.Item;
+import institutosos.org.br.destinocerto.activity.detail.InfoItemAdapter;
+import institutosos.org.br.destinocerto.activity.detail.InfoItemHeader;
 import institutosos.org.br.destinocerto.model.Location;
 import institutosos.org.br.destinocerto.model.WastePackage;
 
 public class PackageListFragment extends ListFragment {
 
     private List<Item> _items;
-    private PackageCardAdapter _adapter;
+    private InfoItemAdapter _adapter;
 
     public void setPackage(WastePackage wastePackage) {
         Resources res =getResources();
 
-        _items.add(new PackageHeader(res.getString(R.string.package_information)));
-        _items.add(new PackageCard(res.getString(R.string.package_barcode), wastePackage.getBarcode()));
-        _items.add(new PackageCard(res.getString(R.string.package_weight), wastePackage.getWeight() + " kg"));
+        _items.add(new InfoItemHeader(res.getString(R.string.package_information)));
+        _items.add(new InfoItem(res.getString(R.string.package_barcode), wastePackage.getBarcode()));
+        _items.add(new InfoItem(res.getString(R.string.package_weight), wastePackage.getWeight() + " kg"));
 
-        _items.add(new PackageHeader(res.getString(R.string.package_site)));
-        _items.add(new PackageCard(res.getString(R.string.package_site_name), wastePackage.getCurrentLocation().getSite().getName()));
-        _items.add(new PackageCard(res.getString(R.string.package_site_address), wastePackage.getCurrentLocation().getSite().getAddress(), PackageCard.TYPES.MAP));
+        _items.add(new InfoItemHeader(res.getString(R.string.package_site)));
+        _items.add(new InfoItem(res.getString(R.string.package_site_name), wastePackage.getCurrentLocation().getSite().getName()));
+        _items.add(new InfoItem(res.getString(R.string.package_site_address), wastePackage.getCurrentLocation().getSite().getAddress(), InfoItem.TYPES.MAP));
 
-        _items.add(new PackageHeader(res.getString(R.string.package_location_history)));
+        _items.add(new InfoItemHeader(res.getString(R.string.package_location_history)));
 
         for(Location l : wastePackage.getLocationHistory()){
-            _items.add(new PackageCard(l.getTimestamp(), l.getSite().getName()));
+            _items.add(new InfoItem(l.getTimestamp(), l.getSite().getName()));
         }
 
         _adapter.notifyDataSetChanged();
@@ -45,7 +48,7 @@ public class PackageListFragment extends ListFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         _items = new ArrayList<>();
-        _adapter = new PackageCardAdapter(getActivity(), _items);
+        _adapter = new InfoItemAdapter(getActivity(), _items);
 
         return inflater.inflate(R.layout.fragment_item_list, container, false);
     }

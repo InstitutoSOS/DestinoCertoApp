@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -40,6 +41,9 @@ public class PackageActivity extends AppCompatActivity {
     @Bind(R.id.package_picture_loading)
     ProgressBar progressBar;
 
+    @Bind(R.id.update_package_button)
+    Button updatePackageButton;
+
     private static HashMap<String, WastePackage> _packages = new HashMap<>();
     private WastePackage _package;
 
@@ -48,6 +52,9 @@ public class PackageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_package);
         ButterKnife.bind(this);
+
+        // TODO check if signed in
+        updatePackageButton.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
         final String barcode = intent.getStringExtra(BARCODE);

@@ -1,4 +1,4 @@
-package institutosos.org.br.destinocerto.activity.detail.wastepackage;
+package institutosos.org.br.destinocerto.activity.detail;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,18 +6,17 @@ import android.view.View;
 import android.widget.TextView;
 
 import institutosos.org.br.destinocerto.R;
-import institutosos.org.br.destinocerto.activity.detail.Item;
 
-public class PackageHeader extends Item {
+public class InfoItemHeader extends Item {
     private final String name;
 
-    public PackageHeader(String name) {
+    public InfoItemHeader(String name) {
         this.name = name;
     }
 
     @Override
     public int getViewType() {
-        return PackageCardAdapter.RowType.HEADER_ITEM.ordinal();
+        return InfoItemAdapter.RowType.HEADER_ITEM.ordinal();
     }
 
     @Override
