@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import institutosos.org.br.destinocerto.Application;
 import institutosos.org.br.destinocerto.R;
 import institutosos.org.br.destinocerto.activity.signup.LoginActivity;
 
@@ -25,12 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        // debug code
-        //Intent intent = new Intent(this, PackageActivity.class);
-        //intent.putExtra(PackageActivity.BARCODE, "f9483688-2641-45b6-ba50-50f3db2488a4");
-        //startActivity(intent);
-        // end debug code
 
         _scanButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +45,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(Application.getUser() == null) {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.menu_main_signed_in, menu);
+        }
         return true;
     }
 
@@ -70,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
             return true;
+        } else if (id == R.id.action_sign_out) {
+            Application.setUser(null);
+            return true;
         }
-
 
         return super.onOptionsItemSelected(item);
     }

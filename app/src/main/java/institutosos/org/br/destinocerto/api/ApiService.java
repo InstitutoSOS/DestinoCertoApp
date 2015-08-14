@@ -35,4 +35,7 @@ public interface ApiService {
     @POST("/user")
     User signUp(@Part("username") String username, @Part("password") String password);
 
+    @Multipart
+    @POST("/locationhistory/{id}")
+    void updatePackageLocation(@Part("id") int id, @Part("idSite") int idSite, Callback<WastePackage> cb);
 }

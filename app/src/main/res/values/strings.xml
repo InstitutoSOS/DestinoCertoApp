@@ -34,8 +34,9 @@
     <string name="show_map">Map</string>
     <string name="sites_not_found">Could not fetch sites</string>
     <string name="sites_not_found_description">The sites could not be fetched from our servers.</string>
-    <string name="update_location">Update location</string>
-
+    <string name="confirm_package">Confirm package</string>
+    <string name="decline_package">Decline package</string>
+    <string name="action_sign_out">Sign out</string>
     <string name="prompt_site_name">Cooperative name</string>
     <string name="prompt_site_address">Address</string>
     <string name="create_site">Create cooperative</string>

@@ -31,6 +31,7 @@ import java.util.List;
 import institutosos.org.br.destinocerto.Application;
 import institutosos.org.br.destinocerto.R;
 import institutosos.org.br.destinocerto.model.LoginResult;
+import institutosos.org.br.destinocerto.model.User;
 
 /**
  * A login screen that offers login via email/password.
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private User _user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,9 +263,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected EStatus doInBackground(Void... params) {
             LoginResult result = Application.getApiClient().getService().login(mEmail, mPassword);
-
+            _user = result.getModel();
             if (result.isSuccess()) {
-                return EStatus.LoggedIn;
+                return result.getModel().getSite() == null ? EStatus.CreatedUser : EStatus.LoggedIn;
             }
 
             if (result.userExists()) {
@@ -280,6 +282,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (result == EStatus.LoggedIn) {
+                Application.setUser(_user);
                 finish();
             } else if (result == EStatus.CreatedUser) {
                 startActivity(new Intent(LoginActivity.this, CreateSiteActivity.class));

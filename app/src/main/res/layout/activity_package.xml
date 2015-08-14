@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_package_root"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -17,10 +18,10 @@
             android:id="@+id/package_picture"
             android:layout_width="80dp"
             android:layout_height="100dp"
-            android:contentDescription="@string/package_picture_description"
-            android:scaleType="fitStart"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
+            android:contentDescription="@string/package_picture_description"
+            android:scaleType="fitStart"
             android:visibility="invisible" />
 
         <ProgressBar
@@ -58,11 +59,23 @@
         tools:layout="@layout/fragment_item_list" />
 
     <Button
-        android:id="@+id/update_package_button"
+        android:id="@+id/decline_package_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/package_info_list"
-        android:visibility="gone"
-        android:text="@string/update_location" />
+        android:background="#BD1F1F"
+        android:textColor="#fff"
+        android:layout_marginTop="2dp"
+        android:text="@string/decline_package" />
+
+    <Button
+        android:id="@+id/confirm_package_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/decline_package_button"
+        android:background="#519827"
+        android:textColor="#fff"
+        android:text="@string/confirm_package" />
+
 
 </RelativeLayout>

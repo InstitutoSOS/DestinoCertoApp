@@ -21,6 +21,7 @@ public class WastePackage {
 
     @SerializedName("siteHistory")
     private List<Location> siteHistory;
+    private int id;
 
     public double getWeight() {
         return weight;
@@ -44,5 +45,9 @@ public class WastePackage {
 
     public List<Location> getLocationHistory() {
         return siteHistory;
+    }
+
+    public int getId() {
+        return id;
     }
 }

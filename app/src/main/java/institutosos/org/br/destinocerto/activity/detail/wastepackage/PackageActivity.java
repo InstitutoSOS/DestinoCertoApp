@@ -3,6 +3,7 @@ package institutosos.org.br.destinocerto.activity.detail.wastepackage;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -41,8 +42,11 @@ public class PackageActivity extends AppCompatActivity {
     @Bind(R.id.package_picture_loading)
     ProgressBar progressBar;
 
-    @Bind(R.id.update_package_button)
-    Button updatePackageButton;
+    @Bind(R.id.confirm_package_button)
+    Button confirmPackageButton;
+
+    @Bind(R.id.decline_package_button)
+    Button declinePackageButton;
 
     private static HashMap<String, WastePackage> _packages = new HashMap<>();
     private WastePackage _package;
@@ -53,8 +57,37 @@ public class PackageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_package);
         ButterKnife.bind(this);
 
-        // TODO check if signed in
-        updatePackageButton.setVisibility(View.VISIBLE);
+        hideButtons();
+
+        confirmPackageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Application.getApiClient().getService().updatePackageLocation(_package.getId(), Application.getUser().getSite().getId(), new Callback<WastePackage>() {
+                    @Override
+                    public void success(WastePackage wastePackage, Response response) {
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        // TODO show error
+                    }
+                });
+                Snackbar snackbar = Snackbar.make(findViewById(R.id.activity_package_root), "Package confirmed!", Snackbar.LENGTH_LONG);
+                snackbar.getView().setBackgroundColor(0xFF519827);
+                snackbar.show();
+                hideButtons();
+            }
+        });
+        declinePackageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar snackbar = Snackbar.make(findViewById(R.id.activity_package_root), "Package declined!", Snackbar.LENGTH_LONG);
+                snackbar.getView().setBackgroundColor(0xFFBD1F1F);
+                snackbar.show();
+                hideButtons();
+            }
+        });
 
         Intent intent = getIntent();
         final String barcode = intent.getStringExtra(BARCODE);
@@ -90,11 +123,26 @@ public class PackageActivity extends AppCompatActivity {
         });
     }
 
+    private void hideButtons() {
+        confirmPackageButton.setVisibility(View.GONE);
+        declinePackageButton.setVisibility(View.GONE);
+    }
+
+    private void showButtons() {
+        confirmPackageButton.setVisibility(View.VISIBLE);
+        declinePackageButton.setVisibility(View.VISIBLE);
+    }
+
     private void setup() {
         ((PackageListFragment) getFragmentManager().findFragmentById(R.id.package_info_list)).setPackage(_package);
         packageMaterial.setText(_package.getMaterial().getName());
         packageCooperative.setText(_package.getCurrentLocation().getSite().getName());
         new DownloadImageTask(packagePicture, progressBar).execute(_package.getImageUrl());
+
+        // show only if this package is in the users site
+        if (Application.getUser() != null) {
+            showButtons();
+        }
 
         packagePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,4 +154,5 @@ public class PackageActivity extends AppCompatActivity {
             }
         });
     }
+
 }
