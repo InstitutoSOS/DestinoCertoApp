@@ -15,5 +15,8 @@
     <string name="fullscreen_image_description">Image of package</string>
     <string name="title_activity_about">About Destino Certo</string>
 
-    <string name="about_text">This about text tell stuff about this app.</string>
+    <string name="about_text">Legal text and stuffs.</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="show_map">Map</string>
+    <string name="title_activity_site">Site</string>
 </resources>

@@ -2,55 +2,46 @@ package institutosos.org.br.destinocerto.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class WastePackage {
-    private EMaterial material;
+
+    private Material material;
+
     private double weight;
-    @SerializedName("picture")
+
+    @SerializedName("image")
     private String imageUrl;
-    private Site site;
+
+    @SerializedName("currentLocation")
+    private Location currentLocation;
+
     private String barcode;
 
-    public void setMaterial(EMaterial material) {
-        this.material = material;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public void setSite(Site site) {
-        this.site = site;
-    }
+    @SerializedName("siteHistory")
+    private List<Location> siteHistory;
 
     public double getWeight() {
         return weight;
     }
 
-    public EMaterial getMaterial() {
+    public Material getMaterial() {
         return material;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
     }
 
     public String getBarcode() {
         return barcode;
     }
 
-    public Site getSite() {
-        return site;
+    public Location getCurrentLocation() {
+        return currentLocation;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public enum EMaterial {
-        PLASTIC
+    public List<Location> getLocationHistory() {
+        return siteHistory;
     }
 }

@@ -1,13 +1,14 @@
-package institutosos.org.br.destinocerto.activity.detail;
+package institutosos.org.br.destinocerto.activity.detail.wastepackage;
 
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import retrofit.client.Response;
 public class PackageActivity extends AppCompatActivity {
 
     public static final String BARCODE = "BARCODE";
+    private static final String TAG = "PACKAGE_ACTIVITY";
 
     @Bind(R.id.package_material)
     TextView packageMaterial;
@@ -35,22 +37,17 @@ public class PackageActivity extends AppCompatActivity {
     @Bind(R.id.package_picture)
     ImageView packagePicture;
 
+    @Bind(R.id.package_picture_loading)
+    ProgressBar progressBar;
+
     private static HashMap<String, WastePackage> _packages = new HashMap<>();
     private WastePackage _package;
-    private PackageListFragment _fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_package);
         ButterKnife.bind(this);
-
-        FragmentManager fm = getFragmentManager();
-        if (fm.findFragmentById(android.R.id.content) == null) {
-            _fragment = new PackageListFragment();
-            fm.beginTransaction().add(android.R.id.content, _fragment).commit();
-        }
-
 
         Intent intent = getIntent();
         final String barcode = intent.getStringExtra(BARCODE);
@@ -84,20 +81,20 @@ public class PackageActivity extends AppCompatActivity {
                         .show();
             }
         });
-
     }
 
     private void setup() {
-        _fragment.setPackage(_package);
-        packageMaterial.setText(_package.getMaterial().toString());
-        packageCooperative.setText(_package.getSite().getName());
-        new DownloadImageTask(packagePicture).execute(_package.getImageUrl());
+        ((PackageListFragment) getFragmentManager().findFragmentById(R.id.package_info_list)).setPackage(_package);
+        packageMaterial.setText(_package.getMaterial().getName());
+        packageCooperative.setText(_package.getCurrentLocation().getSite().getName());
+        new DownloadImageTask(packagePicture, progressBar).execute(_package.getImageUrl());
 
         packagePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PackageActivity.this, ImageActivity.class);
-                intent.putExtra(ImageActivity.IMAGE_URL, _package.getImageUrl());
+                Log.d(TAG, "showing fullscreen");
+                Intent intent = new Intent(PackageActivity.this, FullscreenImageActivity.class);
+                intent.putExtra(FullscreenImageActivity.IMAGE_URL, _package.getImageUrl());
                 startActivity(intent);
             }
         });

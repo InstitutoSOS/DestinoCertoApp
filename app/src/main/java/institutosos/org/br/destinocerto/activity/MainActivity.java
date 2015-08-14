@@ -11,13 +11,16 @@ import android.widget.Button;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import institutosos.org.br.destinocerto.R;
-import institutosos.org.br.destinocerto.activity.detail.PackageActivity;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.scanButton)
     Button _scanButton;
+
     @Bind(R.id.updateLocationButton)
     Button _updateLocationButton;
+
+    @Bind(R.id.mapButton)
+    Button _mapButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ScannerActivity.class));
+            }
+        });
+
+        _mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MapsActivity.class));
             }
         });
     }

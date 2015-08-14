@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.google.zxing.Result;
 
-import institutosos.org.br.destinocerto.activity.detail.PackageActivity;
+import institutosos.org.br.destinocerto.activity.detail.wastepackage.PackageActivity;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class ScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {

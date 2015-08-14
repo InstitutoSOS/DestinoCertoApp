@@ -1,4 +1,4 @@
-package institutosos.org.br.destinocerto.activity.detail;
+package institutosos.org.br.destinocerto.activity.detail.wastepackage;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import java.util.List;
+
+import institutosos.org.br.destinocerto.activity.detail.Item;
 
 public class PackageCardAdapter extends ArrayAdapter<Item> {
     private LayoutInflater _inflater;

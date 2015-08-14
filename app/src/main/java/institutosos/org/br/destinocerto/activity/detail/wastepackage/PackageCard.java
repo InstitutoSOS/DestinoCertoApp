@@ -1,4 +1,4 @@
-package institutosos.org.br.destinocerto.activity.detail;
+package institutosos.org.br.destinocerto.activity.detail.wastepackage;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import institutosos.org.br.destinocerto.R;
+import institutosos.org.br.destinocerto.activity.detail.Item;
 
 /**
  * Created by rehans on 13-Aug-15.

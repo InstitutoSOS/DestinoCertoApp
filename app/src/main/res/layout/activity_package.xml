@@ -18,7 +18,14 @@
             android:layout_width="80dp"
             android:layout_height="120dp"
             android:contentDescription="@string/package_picture_description"
-            android:scaleType="fitStart" />
+            android:scaleType="fitStart"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/package_picture_loading"
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:indeterminate="true" />
 
         <TextView
             android:id="@+id/package_material"
@@ -38,10 +45,12 @@
             android:textSize="18sp" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/detail_header" />
+    <fragment
+        android:id="@+id/package_info_list"
+        android:name="institutosos.org.br.destinocerto.activity.detail.wastepackage.PackageListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/detail_header"
+        tools:layout="@layout/fragment_item_list" />
 
 </RelativeLayout>

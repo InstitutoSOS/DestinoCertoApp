@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep class * extends java.util.ListResourceBundle {
+   protected Object[][] getContents();
+}

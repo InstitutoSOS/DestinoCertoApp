@@ -1,19 +1,16 @@
 package institutosos.org.br.destinocerto.model;
 
-/**
- * Created by rehans on 13-Aug-15.
- */
+import com.google.gson.annotations.SerializedName;
+
 public class Site {
+    private Integer id;
     private String name;
     private String address;
+    private double lat;
+    private double lng;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    @SerializedName("site_type")
+    private String siteType;
 
     public String getAddress() {
         return address;
@@ -21,5 +18,21 @@ public class Site {
 
     public String getName() {
         return name;
+    }
+
+    public double getLongitude() {
+        return lng;
+    }
+
+    public double getLatitude() {
+        return lat;
+    }
+
+    public String getType() {
+        return siteType;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

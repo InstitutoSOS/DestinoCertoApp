@@ -3,14 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
-    tools:context="institutosos.org.br.destinocerto.activity.detail.ImageActivity">
+    tools:context="institutosos.org.br.destinocerto.activity.detail.wastepackage.FullscreenImageActivity">
 
     <ImageView
         android:id="@+id/fullscreen_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:contentDescription="@string/fullscreen_image_description"
+        android:gravity="center"
         android:keepScreenOn="true" />
+
+    <ProgressBar
+        android:id="@+id/fullscreen_image_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:indeterminate="true" />
 
 </FrameLayout>
