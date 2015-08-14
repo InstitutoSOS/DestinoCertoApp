@@ -14,14 +14,9 @@ public class ImageActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_image);
-        setupActionBar();
 
         final ImageView contentView = (ImageView) findViewById(R.id.fullscreen_image);
         new DownloadImageTask(contentView).execute(getIntent().getStringExtra(IMAGE_URL));
-    }
-
-    private void setupActionBar() {
-
     }
 
 }

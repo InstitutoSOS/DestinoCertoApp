@@ -4,32 +4,32 @@
     android:layout_height="match_parent"
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true"
+    android:background="#fff"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context="institutosos.org.br.destinocerto.activity.MainActivity">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-         />
+        android:src="@drawable/logo" />
 
     <Button
         android:id="@+id/scanButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_alignBottom="@+id/imageView"
+        android:layout_gravity="center_horizontal"
         android:text="@string/scan" />
 
     <Button
         android:id="@+id/updateLocationButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/scanButton"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/scanButton"
+        android:enabled="false"
         android:text="@string/update_location" />
 
 
