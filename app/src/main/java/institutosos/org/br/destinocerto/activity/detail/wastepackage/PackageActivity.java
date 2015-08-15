@@ -51,6 +51,7 @@ public class PackageActivity extends AppCompatActivity {
     Button declinePackageButton;
 
     private static HashMap<String, WastePackage> _packages = new HashMap<>();
+    private static String _barcode;
     private WastePackage _package;
 
     @Override
@@ -96,7 +97,13 @@ public class PackageActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        final String barcode = intent.getStringExtra(BARCODE);
+        String barcode = intent.getStringExtra(BARCODE);
+
+        if (barcode != null) {
+            _barcode = barcode;
+        } else {
+            barcode = _barcode;
+        }
 
         if (_packages.get(barcode) != null) {
             _package = _packages.get(barcode);
@@ -104,11 +111,12 @@ public class PackageActivity extends AppCompatActivity {
             return;
         }
 
+        final String finalBarcode = barcode;
         Application.getApiClient().getService().getPackage(barcode, new Callback<WastePackage>() {
             @Override
             public void success(final WastePackage wastePackage, Response response) {
                 _package = wastePackage;
-                _packages.put(barcode, wastePackage);
+                _packages.put(finalBarcode, wastePackage);
                 setup();
             }
 
