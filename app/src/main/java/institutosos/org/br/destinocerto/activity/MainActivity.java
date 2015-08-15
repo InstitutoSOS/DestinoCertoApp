@@ -1,12 +1,13 @@
 package institutosos.org.br.destinocerto.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.mapButton)
     Button _mapButton;
+
+    @Bind(R.id.signed_in_text)
+    TextView signedInText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         invalidateOptionsMenu();
+
+        if (Application.getUser() != null) {
+            signedInText.setText(Application.getUser().getUsername() + "\n" + Application.getUser().getSite().getName());
+        } else {
+            signedInText.setText("");
+        }
     }
 
     @Override
@@ -79,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.action_sign_out) {
             Application.setUser(null);
             invalidateOptionsMenu();
+            signedInText.setText("");
             return true;
         }
 

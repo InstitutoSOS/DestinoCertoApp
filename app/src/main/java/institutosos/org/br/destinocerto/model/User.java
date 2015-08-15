@@ -17,4 +17,8 @@ public class User {
     public void setSite(Site site) {
         this.site = site;
     }
+
+    public String getUsername() {
+        return username;
+    }
 }
