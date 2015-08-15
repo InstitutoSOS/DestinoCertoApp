@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Date;
-import java.util.HashMap;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -50,7 +49,6 @@ public class PackageActivity extends AppCompatActivity {
     @Bind(R.id.decline_package_button)
     Button declinePackageButton;
 
-    private static HashMap<String, WastePackage> _packages = new HashMap<>();
     private static String _barcode;
     private WastePackage _package;
 
@@ -72,6 +70,7 @@ public class PackageActivity extends AppCompatActivity {
                         l.setSite(Application.getUser().getSite());
                         l.setTimestamp(new Date());
                         _package.getLocationHistory().add(l);
+                        packageCooperative.setText(Application.getUser().getSite().getName());
                         setupFragment();
                     }
 
@@ -105,18 +104,10 @@ public class PackageActivity extends AppCompatActivity {
             barcode = _barcode;
         }
 
-        if (_packages.get(barcode) != null) {
-            _package = _packages.get(barcode);
-            setup();
-            return;
-        }
-
-        final String finalBarcode = barcode;
         Application.getApiClient().getService().getPackage(barcode, new Callback<WastePackage>() {
             @Override
             public void success(final WastePackage wastePackage, Response response) {
                 _package = wastePackage;
-                _packages.put(finalBarcode, wastePackage);
                 setup();
             }
 
