@@ -3,46 +3,46 @@
     <string name="title_activity_main">Destino Certo</string>
     <string name="logo_description">Destino Certo Logo</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="action_about">About</string>
-    <string name="scan">Scan</string>
+    <string name="action_settings">Configurações</string>
+    <string name="action_about">Sobre</string>
+    <string name="scan">Escanear</string>
 
-    <string name="title_activity_package">Package details</string>
+    <string name="title_activity_package">Detalhes do Pacote</string>
 
-    <string name="title_activity_image">Package Image</string>
-    <string name="package_picture_description">Picture of the package</string>
-    <string name="fullscreen_image_description">Image of package</string>
-    <string name="title_activity_about">About Destino Certo</string>
+    <string name="title_activity_image">Imagem do pacote</string>
+    <string name="package_picture_description">Foto do pacote</string>
+    <string name="fullscreen_image_description">Image do pacote</string>
+    <string name="title_activity_about">Sobre o Destino Certo</string>
 
-    <string name="about_text">This app was created during the WorldSkills Digital Challenge 2015.
-        The hackathon like event took apart during the 4 days of competition in São Paulo. Team
-        members: Kevin Dantas Shih, Guilherme Pontes, Alessandra Rosa, Sebastian Häni</string>
-    <string name="site_not_found">Site not found</string>
-    <string name="site_not_found_description">The site could not be found in our database.</string>
-    <string name="site_information">Site information</string>
-    <string name="site_address">Address</string>
-    <string name="package_not_found">Package code not found</string>
-    <string name="package_not_found_description">The scanned code could not be found in our database.</string>
-    <string name="package_information">Package information</string>
-    <string name="package_barcode">Barcode</string>
-    <string name="package_weight">Weight</string>
-    <string name="package_site">Site</string>
-    <string name="package_site_name">Name</string>
-    <string name="package_site_address">Address</string>
-    <string name="package_location_history">Location History</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="show_map">Map</string>
-    <string name="sites_not_found">Could not fetch sites</string>
-    <string name="sites_not_found_description">The sites could not be fetched from our servers.</string>
-    <string name="confirm_package">Confirm package</string>
-    <string name="decline_package">Decline package</string>
-    <string name="action_sign_out">Sign out</string>
-    <string name="prompt_site_name">Cooperative name</string>
-    <string name="prompt_site_address">Address</string>
-    <string name="create_site">Create cooperative</string>
-    <string name="material_info">Materials</string>
-    <string name="title_activity_site">Site</string>
-    <string name="title_activity_create_site">Create Site</string>
+    <string name="about_text">Esse aplicativo foi criado durante o WorldSkills Digital Challenge 2015.
+        O evento similar a um hackathon teve 4 dias de competição em São Paulo. 
+        Membros do time: Alessandra Rosa, Guilherme Pontes, Kevin Dantas Shih e Sebastian Häni.</string>
+    <string name="site_not_found">Local não encontrado</string>
+    <string name="site_not_found_description">O conteúdo não foi encontrado no banco de dados.</string>
+    <string name="site_information">Informações</string>
+    <string name="site_address">Endereço</string>
+    <string name="package_not_found">Pacote não foi encontrado</string>
+    <string name="package_not_found_description">O código escaneado não foi encontrado no banco de dados.</string>
+    <string name="package_information">Informações do Pacote</string>
+    <string name="package_barcode">Código de Barras</string>
+    <string name="package_weight">Peso</string>
+    <string name="package_site">Localização</string>
+    <string name="package_site_name">Nome</string>
+    <string name="package_site_address">Endereço</string>
+    <string name="package_location_history">Histórico de Localização</string>
+    <string name="title_activity_maps">Mapa</string>
+    <string name="show_map">Mapa</string>
+    <string name="sites_not_found">Localização não encontrada.</string>
+    <string name="sites_not_found_description">Essa localização não fou encontrada.</string>
+    <string name="confirm_package">Aceitar pacote</string>
+    <string name="decline_package">Rejeitar pacote</string>
+    <string name="action_sign_out">Sair</string>
+    <string name="prompt_site_name">Nome da Cooperativa</string>
+    <string name="prompt_site_address">Endereço</string>
+    <string name="create_site">Criar cooperativa</string>
+    <string name="material_info">Materiais</string>
+    <string name="title_activity_site">Localização</string>
+    <string name="title_activity_create_site">Localização</string>
     <string name="preference_file_key">preference_file_key</string>
     <string name="serialized_user">serialized_user</string>
 </resources>
