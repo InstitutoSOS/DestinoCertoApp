@@ -15,15 +15,12 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,16 +57,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -81,6 +68,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(Application.getUser()!=null){
+            finish();
+        }
     }
 
     private void populateAutoComplete() {
@@ -263,16 +259,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected EStatus doInBackground(Void... params) {
             LoginResult result = Application.getApiClient().getService().login(mEmail, mPassword);
-            _user = result.getModel();
+            _user = result.getUser();
             if (result.isSuccess()) {
-                return result.getModel().getSite() == null ? EStatus.CreatedUser : EStatus.LoggedIn;
+                return result.getUser().getSite() == null ? EStatus.CreatedUser : EStatus.LoggedIn;
             }
 
             if (result.userExists()) {
                 return EStatus.Failed;
             }
 
-            Application.getApiClient().getService().signUp(mEmail, mPassword);
+            _user = Application.getApiClient().getService().signUp(mEmail, mPassword);
             return EStatus.CreatedUser;
         }
 
@@ -281,8 +277,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
 
+            Application.setUser(_user);
+
             if (result == EStatus.LoggedIn) {
-                Application.setUser(_user);
                 finish();
             } else if (result == EStatus.CreatedUser) {
                 startActivity(new Intent(LoginActivity.this, CreateSiteActivity.class));

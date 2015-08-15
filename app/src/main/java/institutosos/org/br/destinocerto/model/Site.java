@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 @SuppressWarnings("unused")
 public class Site {
 
-    private Integer id;
+    private int id;
     private String name;
     private String address;
     private double lat;
@@ -34,7 +34,7 @@ public class Site {
         return siteType;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 }

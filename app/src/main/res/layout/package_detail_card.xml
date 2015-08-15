@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/list_content1"
-        android:layout_width="91dip"
+        android:layout_width="95dip"
         android:layout_height="match_parent"
         android:layout_margin="5dip"
         android:clickable="false"
@@ -16,7 +16,7 @@
         android:paddingBottom="1dip"
         android:paddingTop="1dip"
         android:textColor="#bbbbbb"
-        android:textSize="17sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/list_content2"
@@ -32,6 +32,6 @@
         android:paddingBottom="1dip"
         android:paddingTop="1dip"
         android:textColor="#6d6d6d"
-        android:textSize="17sp" />
+        android:textSize="14sp" />
 
 </RelativeLayout>

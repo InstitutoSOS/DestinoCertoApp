@@ -19,7 +19,7 @@ public class ApiClient {
 
     Gson gson = new GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .registerTypeAdapter(Date.class, new DateTypeAdapter())
+            .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
 
     public ApiClient() {

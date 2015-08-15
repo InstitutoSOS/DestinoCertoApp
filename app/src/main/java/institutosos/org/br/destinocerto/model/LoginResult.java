@@ -1,9 +1,16 @@
 package institutosos.org.br.destinocerto.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class LoginResult {
+    @SerializedName("success")
     private boolean success;
+
+    @SerializedName("userExists")
     private boolean userExists;
-    private User model;
+
+    @SerializedName("model")
+    private User user;
 
     public boolean isSuccess() {
         return success;
@@ -13,7 +20,7 @@ public class LoginResult {
         return userExists;
     }
 
-    public User getModel() {
-        return model;
+    public User getUser() {
+        return user;
     }
 }

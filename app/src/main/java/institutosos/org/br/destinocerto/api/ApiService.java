@@ -7,9 +7,12 @@ import institutosos.org.br.destinocerto.model.Site;
 import institutosos.org.br.destinocerto.model.User;
 import institutosos.org.br.destinocerto.model.WastePackage;
 import retrofit.Callback;
+import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.Multipart;
 import retrofit.http.POST;
+import retrofit.http.PUT;
 import retrofit.http.Part;
 import retrofit.http.Path;
 
@@ -25,7 +28,7 @@ public interface ApiService {
 
     @Multipart
     @POST("/site")
-    void createSite(@Part("name") String name, @Part("address") String address, Callback<Site> cb);
+    Site createSite(@Part("name") String name, @Part("address") String address);
 
     @Multipart
     @POST("/user/login")
@@ -35,7 +38,11 @@ public interface ApiService {
     @POST("/user")
     User signUp(@Part("username") String username, @Part("password") String password);
 
-    @Multipart
-    @POST("/locationhistory/{id}")
-    void updatePackageLocation(@Part("id") int id, @Part("idSite") int idSite, Callback<WastePackage> cb);
+    @FormUrlEncoded
+    @POST("/locationhistory")
+    void updatePackageLocation(@Field("package_id") int id, @Field("site_id") int idSite, Callback<WastePackage> cb);
+
+    @FormUrlEncoded
+    @PUT("/user/{id}")
+    User updateUser(@Path("id") int id, @Field("site_id") int siteId);
 }

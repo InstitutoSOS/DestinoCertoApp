@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +28,9 @@ public class PackageListFragment extends ListFragment {
     private InfoItemAdapter _adapter;
 
     public void setPackage(WastePackage wastePackage) {
-        Resources res =getResources();
+        Resources res = getResources();
 
         _items.add(new InfoItemHeader(res.getString(R.string.package_information)));
-        _items.add(new InfoItem(res.getString(R.string.package_barcode), wastePackage.getBarcode()));
         _items.add(new InfoItem(res.getString(R.string.package_weight), wastePackage.getWeight() + " kg"));
 
         _items.add(new InfoItemHeader(res.getString(R.string.package_site)));
@@ -38,8 +39,9 @@ public class PackageListFragment extends ListFragment {
 
         _items.add(new InfoItemHeader(res.getString(R.string.package_location_history)));
 
-        for(Location l : wastePackage.getLocationHistory()){
-            _items.add(new InfoItem(l.getTimestamp(), l.getSite().getName()));
+        DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+        for (Location l : wastePackage.getLocationHistory()) {
+            _items.add(new InfoItem(format.format(l.getTimestamp()), l.getSite().getName()));
         }
 
         _adapter.notifyDataSetChanged();

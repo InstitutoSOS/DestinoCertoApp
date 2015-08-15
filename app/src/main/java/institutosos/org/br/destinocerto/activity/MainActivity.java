@@ -43,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        invalidateOptionsMenu();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         if(Application.getUser() == null) {
@@ -71,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (id == R.id.action_sign_out) {
             Application.setUser(null);
+            invalidateOptionsMenu();
             return true;
         }
 

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import butterknife.Bind;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 import institutosos.org.br.destinocerto.Application;
 import institutosos.org.br.destinocerto.R;
 import institutosos.org.br.destinocerto.activity.MainActivity;
+import institutosos.org.br.destinocerto.model.Location;
 import institutosos.org.br.destinocerto.model.WastePackage;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -65,7 +67,11 @@ public class PackageActivity extends AppCompatActivity {
                 Application.getApiClient().getService().updatePackageLocation(_package.getId(), Application.getUser().getSite().getId(), new Callback<WastePackage>() {
                     @Override
                     public void success(WastePackage wastePackage, Response response) {
-
+                        Location l = new Location();
+                        l.setSite(Application.getUser().getSite());
+                        l.setTimestamp(new Date());
+                        _package.getLocationHistory().add(l);
+                        setupFragment();
                     }
 
                     @Override
@@ -134,13 +140,13 @@ public class PackageActivity extends AppCompatActivity {
     }
 
     private void setup() {
-        ((PackageListFragment) getFragmentManager().findFragmentById(R.id.package_info_list)).setPackage(_package);
+        setupFragment();
         packageMaterial.setText(_package.getMaterial().getName());
         packageCooperative.setText(_package.getCurrentLocation().getSite().getName());
         new DownloadImageTask(packagePicture, progressBar).execute(_package.getImageUrl());
 
-        // show only if this package is in the users site
-        if (Application.getUser() != null) {
+        // show only if this package is not in the users site (and user is signed in)
+        if (Application.getUser() != null && Application.getUser().getSite().getId() != _package.getCurrentLocation().getSite().getId()) {
             showButtons();
         }
 
@@ -153,6 +159,10 @@ public class PackageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void setupFragment() {
+        ((PackageListFragment) getFragmentManager().findFragmentById(R.id.package_info_list)).setPackage(_package);
     }
 
 }

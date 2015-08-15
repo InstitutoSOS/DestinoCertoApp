@@ -16,21 +16,31 @@
         android:contentDescription="@string/logo_description"
         android:src="@drawable/logo" />
 
-    <Button
-        android:id="@+id/scanButton"
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/imageView"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/scan" />
+        android:columnCount="2">
 
-    <Button
-        android:id="@+id/mapButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/scanButton"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/show_map" />
+        <Button
+            android:id="@+id/scanButton"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bt_barcode"
+            android:gravity="bottom|center"
+            android:text="@string/scan" />
+
+        <Button
+            android:id="@+id/mapButton"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bt_find"
+            android:gravity="bottom|center"
+            android:text="@string/show_map" />
+
+    </GridLayout>
 
 
 </RelativeLayout>

@@ -54,7 +54,7 @@
         android:id="@+id/package_info_list"
         android:name="institutosos.org.br.destinocerto.activity.detail.wastepackage.PackageListFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/detail_header"
         tools:layout="@layout/fragment_item_list" />
 
@@ -63,10 +63,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/package_info_list"
-        android:background="#BD1F1F"
-        android:textColor="#fff"
         android:layout_marginTop="2dp"
-        android:text="@string/decline_package" />
+        android:background="#BD1F1F"
+        android:text="@string/decline_package"
+        android:textColor="#fff" />
 
     <Button
         android:id="@+id/confirm_package_button"
@@ -74,8 +74,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/decline_package_button"
         android:background="#519827"
-        android:textColor="#fff"
-        android:text="@string/confirm_package" />
-
-
+        android:text="@string/confirm_package"
+        android:textColor="#fff" />
 </RelativeLayout>
