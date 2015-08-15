@@ -2,6 +2,9 @@ package institutosos.org.br.destinocerto.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+import java.util.Map;
+
 @SuppressWarnings("unused")
 public class Site {
 
@@ -13,6 +16,9 @@ public class Site {
 
     @SerializedName("site_type")
     private String siteType;
+
+    @SerializedName("materials")
+    private Map<String,Weight> materials;
 
     public String getAddress() {
         return address;
@@ -37,4 +43,9 @@ public class Site {
     public int getId() {
         return id;
     }
+
+    public Map<String,Weight> getMaterials(){
+        return materials;
+    }
+
 }

@@ -40,7 +40,9 @@
     <string name="prompt_site_name">Cooperative name</string>
     <string name="prompt_site_address">Address</string>
     <string name="create_site">Create cooperative</string>
-
+    <string name="material_info">Materials</string>
     <string name="title_activity_site">Site</string>
     <string name="title_activity_create_site">Create Site</string>
+    <string name="preference_file_key">preference_file_key</string>
+    <string name="serialized_user">serialized_user</string>
 </resources>

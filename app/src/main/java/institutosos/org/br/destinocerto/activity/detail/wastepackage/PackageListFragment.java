@@ -4,6 +4,7 @@ import android.app.ListFragment;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,8 @@ public class PackageListFragment extends ListFragment {
     public void setPackage(WastePackage wastePackage) {
         Resources res = getResources();
 
+        _items.clear();
+
         _items.add(new InfoItemHeader(res.getString(R.string.package_information)));
         _items.add(new InfoItem(res.getString(R.string.package_weight), wastePackage.getWeight() + " kg"));
 
@@ -39,8 +42,10 @@ public class PackageListFragment extends ListFragment {
 
         _items.add(new InfoItemHeader(res.getString(R.string.package_location_history)));
 
+        // TODO use localized format
         DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
         for (Location l : wastePackage.getLocationHistory()) {
+            Log.d("fragment", l.getTimestamp().toString());
             _items.add(new InfoItem(format.format(l.getTimestamp()), l.getSite().getName()));
         }
 

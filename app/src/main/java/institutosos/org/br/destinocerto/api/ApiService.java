@@ -3,6 +3,7 @@ package institutosos.org.br.destinocerto.api;
 import java.util.List;
 
 import institutosos.org.br.destinocerto.model.LoginResult;
+import institutosos.org.br.destinocerto.model.Material;
 import institutosos.org.br.destinocerto.model.Site;
 import institutosos.org.br.destinocerto.model.User;
 import institutosos.org.br.destinocerto.model.WastePackage;
@@ -41,6 +42,8 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("/locationhistory")
     void updatePackageLocation(@Field("package_id") int id, @Field("site_id") int idSite, Callback<WastePackage> cb);
+
+    void getMaterials(Callback<List<Material>> cb);
 
     @FormUrlEncoded
     @PUT("/user/{id}")
